@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.j
+<script>
+//<![CDATA[
+	function carregarDados() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		     document.getElementById("display").innerHTML = this.responseText;
+		    }
+		  };
+		  xhttp.open("GET", "http://localhost:3000/clientes", true);
+		  xhttp.send();
+		}
+//]]>
+	</script>
+	
+<title>Insert title here</title>
+</head>
+<body>
+<button type="button" onclick="carregarDados()">Carregar</button>
+	<div id="display">
+	
+	</div>
+
+</body>
+
+<script>
+
+</script>
+</html>
