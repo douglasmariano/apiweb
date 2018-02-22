@@ -35,21 +35,27 @@ appCliente.controller("indexController", function($scope, $http) {
 			console.log(response.status);
 		});
 	};
-	
+
 	$scope.excluirCliente = function(cliente) {
 		$http({
 			method : 'DELETE',
-			url : 'http://localhost:3000/clientes/'+ cliente.id
+			url : 'http://localhost:3000/clientes/' + cliente.id
 		}).then(function(response) {
-			
+
 			pos = $scope.clientes.indexOf(cliente);
 			$scope.clientes.splice(pos, 1);
-			
 
 		}, function(response) {
 			console.log(response.data);
 			console.log(response.status);
 		});
+	};
+
+	$scope.alterarCliente = function(cliente) {
+		$scope.cliente = angular.copy(cliente);
+	};
+	$scope.cancelarAlteraCliente = function(cliente) {
+		$scope.cliente = {};
 	};
 	$scope.carregarClientes();
 

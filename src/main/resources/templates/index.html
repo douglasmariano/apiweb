@@ -13,12 +13,19 @@
 </head>
 <body ng-controller="indexController">
 
-	 Oi {{ cliente.nome}} <br/> 
+	Oi {{ cliente.nome}}
+	<br />
 
 	<input type="text" ng-model="cliente.nome" />
-	<input type="button" value="Salvar" ng-click="salvarCliente()"/>
+	<input type="button" value="Salvar" ng-click="salvarCliente()" />
+	<input type="button" value="Cancelar" ng-click="cancelarAlteraCliente()" />
 
-	<div ng-repeat="cli in clientes">{{cli.id + '|' + cli.nome}}<input type="button" value="Remover" ng-click="excluirCliente(cli)"/></div>
+	<div ng-repeat="cli in clientes">
+		{{cli.id + '|' + cli.nome}}<input type="button" value="Remover"
+			ng-click="excluirCliente(cli)" />
+			<input type="button" value="Alterar"
+			ng-click="alterarCliente(cli)" />
+	</div>
 </body>
 
 <script>
