@@ -1,62 +1,20 @@
 //criação do modulo principal da aplicaçã
-var appCliente = angular.module("appCliente", []);
+var appCliente = angular.module("appCliente", [ 'ngRoute' ]);
 
-// criação e controller
-appCliente.controller("indexController", function($scope, $http) {
+appCliente.config(function($routeProvider,$locationProvider) {
 
-	$scope.clientes = [];
-	$scope.cliente = {};
-
-	$scope.carregarClientes = function() {
-		$http({
-			method : 'GET',
-			url : 'http://localhost:3000/clientes'
-		}).then(function(response) {
-			$scope.clientes = response.data;
-			console.log(response.data);
-			console.log(response.status);
-
-		}, function(response) {
-			console.log(response.data);
-			console.log(response.status);
+	$routeProvider
+	.when("/clientes", {templateUrl : 'view/cliente.html', controller : 'clienteController'})
+	.when("/cidades", {templateUrl : 'view/cidade.html', controller : 'cidadeController'})
+	.when("/estados", {templateUrl : 'view/estado.html', controller : 'estadoController'})
+	.otherwise({
+		redirectTo : '/'
+	});
+	
+	$locationProvider.html5Mode({
+		  enabled: true,
+		  requireBase: false
 		});
-	};
-
-	$scope.salvarCliente = function() {
-		$http({
-			method : 'POST',
-			url : 'http://localhost:3000/clientes',
-			data : $scope.cliente
-		}).then(function(response) {
-			$scope.clientes.push(response.data);
-
-		}, function(response) {
-			console.log(response.data);
-			console.log(response.status);
-		});
-	};
-
-	$scope.excluirCliente = function(cliente) {
-		$http({
-			method : 'DELETE',
-			url : 'http://localhost:3000/clientes/' + cliente.id
-		}).then(function(response) {
-
-			pos = $scope.clientes.indexOf(cliente);
-			$scope.clientes.splice(pos, 1);
-
-		}, function(response) {
-			console.log(response.data);
-			console.log(response.status);
-		});
-	};
-
-	$scope.alterarCliente = function(cliente) {
-		$scope.cliente = angular.copy(cliente);
-	};
-	$scope.cancelarAlteraCliente = function(cliente) {
-		$scope.cliente = {};
-	};
-	$scope.carregarClientes();
-
+	console.log("teste");
 });
+// criação e controller
