@@ -1,0 +1,3 @@
+apppCliente.controller("clienteDetalheController", function(){
+	
+})

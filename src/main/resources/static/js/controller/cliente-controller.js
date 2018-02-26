@@ -9,8 +9,7 @@ appCliente.controller("clienteController", function($scope, $http) {
 			url : 'http://localhost:3000/clientes'
 		}).then(function(response) {
 			$scope.clientes = response.data;
-			console.log(response.data);
-			console.log(response.status);
+
 
 		}, function(response) {
 			console.log(response.data);
@@ -25,6 +24,7 @@ appCliente.controller("clienteController", function($scope, $http) {
 			data : $scope.cliente
 		}).then(function(response) {
 			$scope.clientes.push(response.data);
+			$scope.carregarClientes();
 			$scope.cliente = {};
 
 		}, function(response) {

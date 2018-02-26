@@ -1,3 +1,3 @@
-appCliente.controller("estadoController", function($scope, $http) {
+appCliente.controller("estadoController", function() {
 	
 });
