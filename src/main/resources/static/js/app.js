@@ -17,5 +17,6 @@ appCliente.config(function($routeProvider,$locationProvider) {
 		  requireBase: false
 		});
 	console.log("teste");
+
 });
 // criação e controller
